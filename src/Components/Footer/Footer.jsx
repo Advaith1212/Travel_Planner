@@ -7,9 +7,9 @@ import { MdTravelExplore } from "react-icons/md";
 const Footer = () => {
   return (
     <section className="footer">
-      <div className="videoDiv">
+      {/* <div className="videoDiv">
         <video src={video2} loop autoPlay muted type="video/mp4"></video>
-      </div>
+      </div> */}
       <div className="secContent container">
         <div className="contactDiv flex">
           <div className="text">

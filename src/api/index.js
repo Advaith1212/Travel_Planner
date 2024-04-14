@@ -1,5 +1,5 @@
 import axios from "axios";
-import data from "../Assets/hoteldata_clt.json"
+// import data from "../Assets/hoteldata_clt.json"
 
 // booking.com hotels
 // const url  = 'https://booking-com15.p.rapidapi.com/api/v1/hotels/searchHotelsByCoordinates'    //search hotels by coordinates
@@ -42,7 +42,8 @@ export const getPlacesData = async (type, sw, ne) => {
           tr_latitude: ne.lat,
         },
         headers: {
-          'X-RapidAPI-Key': 'd485646128msh2360aa2a3bb58c6p1305d9jsn11739ee12692',
+          // 'X-RapidAPI-Key': 'd485646128msh2360aa2a3bb58c6p1305d9jsn11739ee12692',
+          'X-RapidAPI-Key': 'be09b25eaamsh15b5bd7aff256e8p1a4e0bjsne250fdaa68d5',
           'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com',
         },
       });

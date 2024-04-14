@@ -1,9 +1,10 @@
-import React, { useState, useEffect, createRef } from 'react';
+// import React, { useState, useEffect, createRef } from 'react';
+import React from 'react';
 import { Box, Typography, Button, Card, CardMedia, CardContent, CardActions,Chip } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
 import useStyles from './styles.js';
 // import PoolIcon from '@material-ui/icons/Pool';
-import LocalParkingIcon from '@material-ui/icons/LocalParking';
+// import LocalParkingIcon from '@material-ui/icons/LocalParking';
 import PhoneIcon from '@material-ui/icons/Phone';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 

@@ -23,9 +23,9 @@ const Navbar = () => {
           <ul className="navLists flex">
             <li className="navItem">
               <a
-                href="#"
-                className={`navLink ${activeItem === "Home" ? "activeNavItem" : ""}`}
-                onClick={() => handleItemClick("Home")}
+                // href="#"
+                // className={`navLink ${activeItem === "Home" ? "activeNavItem" : ""}`}
+                // onClick={() => handleItemClick("Home")}
               >
                 <FontAwesomeIcon icon={faHouseUser} />
                 Home
