@@ -1,0 +1,123 @@
+/* Destinations.css */
+.main {
+  padding: 20px;
+}
+
+.secTitle .title {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.destinationCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.destinationCard:hover .cardDetails {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cardImage {
+  position: relative;
+  /* ... other styles ... */
+}
+
+.cardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardOverlay .overlayContent {
+  text-align: center;
+  color: #fff;
+  transform: translateY(20px);
+  transition: transform 0.3s ease-in-out;
+}
+
+.cardImage:hover .cardOverlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cardImage:hover .cardOverlay .overlayContent {
+  transform: translateY(0);
+}
+
+.cardImage img {
+  width: 100%;
+  display: block;
+  height: 200px;
+  object-fit: cover;
+}
+
+.cardContent {
+  padding: 15px;
+  background: white;
+}
+
+.cardContent h4 {
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.cardInfo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cardInfo .icon {
+  margin-right: 5px;
+}
+
+.cardDetails {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease-in-out;
+  padding: 15px;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.detailsButton {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.detailsButton:hover {
+  background-color: #555;
+}
+
+@media (min-width: 600px) {
+  .grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}

@@ -1,42 +1,32 @@
 import React from "react";
 import "./Footer.css";
 import video2 from '../../Assets/waterfalls.mp4';
-import { FiSend } from "react-icons/fi";
+import { FiSend, FiInstagram, FiMail } from "react-icons/fi";
 import { MdTravelExplore } from "react-icons/md";
 
 const Footer = () => {
-  return (
-    <section className="footer">
-      {/* <div className="videoDiv">
-        <video src={video2} loop autoPlay muted type="video/mp4"></video>
-      </div> */}
-      <div className="secContent container">
-        <div className="contactDiv flex">
-          <div className="text">
-            <small>KEEP IN TOUCH</small>
-            <h2>Travel with us</h2>
-          </div>
-          <div className="inputDiv flex">
-            <input type="text" placeholder="Enter Email Address" />
-            <button className="btn flex" type="submit">
-              SEND
-              <FiSend className="icon" />
-            </button>
-          </div>
-        </div>
-        <div className="footerCard flex">
-          <div className="footerIntro flex">
-            <div className="logoDiv">
-              <a href="#" className="logo flex">
-                <MdTravelExplore className="icon" />
-                Travel.
-              </a>
+    return (
+        <section className='footer'>
+            <div className='secContent container'>
+                <div className="quote-container">
+                    <p className="quote">
+                        <span>"Once a year go somewhere you have never been before." — Dalai Lama</span></p>
+                        <p1><span>Travel Planner, Happy planner !</span></p1>
+                </div>
+                <div className="contact-info">
+                    <p className="email">
+                        <FiMail className="icon" style={{ color: '#2D9596' }} /><b>Email us at:</b> <a href="mailto:travel@example.com" style={{ color: '#2D9596' }}>travel@example.com</a>
+                    </p>
+                    <p className="phone">
+                        <FiSend className="icon" style={{ color: '#2D9596' }} /><b>Call us:</b> <span style={{ color: '#2D9596' }}>+123 456 7890</span>
+                    </p>
+                    <p className="instagram">
+                        <FiInstagram className="icon" style={{ color: '#2D9596' }} /> <b>Follow us on Instagram:</b> <a href="https://instagram.com/travel" style={{ color: '#2D9596' }}>Travel Planner</a>
+                    </p>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+        </section>
+    );
 };
 
 export default Footer;

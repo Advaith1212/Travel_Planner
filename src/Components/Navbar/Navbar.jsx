@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouseUser, faRoute } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouseUser } from "@fortawesome/free-solid-svg-icons";
+import { faRoute } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
   const [activeItem, setActiveItem] = useState(null);
@@ -14,40 +16,59 @@ const Navbar = () => {
     <section className="navBarSection">
       <header className="header flex">
         <div className="logoDiv">
-          <a href="#" className="logo flex">
+          <Link to="/" className="logo flex">
             <FontAwesomeIcon icon={faRoute} />
-            <h1>Travel Planner</h1>
-          </a>
+            <span></span>
+            <h1 className="travelPlanner"> Travel Planner</h1>
+          </Link>
         </div>
         <div className="navLinks">
           <ul className="navLists flex">
             <li className="navItem">
-              <a
-                // href="#"
-                // className={`navLink ${activeItem === "Home" ? "activeNavItem" : ""}`}
-                // onClick={() => handleItemClick("Home")}
+              <Link
+                to="/"
+                className={`navLink ${
+                  activeItem === "Home" ? "activeNavItem" : ""
+                }`}
+                onClick={() => handleItemClick("Home")}
               >
                 <FontAwesomeIcon icon={faHouseUser} />
+                <span></span>
                 Home
-              </a>
+              </Link>
             </li>
             <li className="navItem">
-              <a
-                href="#"
-                className={`navLink ${activeItem === "About" ? "activeNavItem" : ""}`}
+              <Link
+                to="/about"
+                className={`navLink ${
+                  activeItem === "About" ? "activeNavItem" : ""
+                }`}
                 onClick={() => handleItemClick("About")}
               >
                 About
-              </a>
+              </Link>
             </li>
             <li className="navItem">
-              <a
-                href="#"
-                className={`navLink ${activeItem === "SignIn" ? "activeNavItem" : ""}`}
-                onClick={() => handleItemClick("SignIn")}
+              <Link
+                to="/signin"
+                className={`navLink ${
+                  activeItem === "Sign In" ? "activeNavItem" : ""
+                }`}
+                onClick={() => handleItemClick("Sign In")}
               >
                 Sign In
-              </a>
+              </Link>
+            </li>
+            <li className="navItem">
+              <Link
+                to="/destinations"
+                className={`navLink ${
+                  activeItem === "Destinations" ? "activeNavItem" : ""
+                }`}
+                onClick={() => handleItemClick("Destinations")}
+              >
+                Destinations
+              </Link>
             </li>
           </ul>
         </div>
