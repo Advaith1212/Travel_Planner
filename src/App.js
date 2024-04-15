@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Components/Navbar/Navbar";
 import Home from "./Components/Home/Home";
-import Main from "./Components/Main/Main";
-import { CssBaseline, Grid } from "@material-ui/core";
+import { CssBaseline } from "@material-ui/core";
 import { getPlacesData } from "./api";
-import Map from "./Components/Map/Map";
-import List from "./Components/List/List";
-import Header from "./Components/Header/Header";
-import Destinations from "./Components/Destinations/Destinations";
 import Footer from "./Components/Footer/Footer";
-import SignIn from "./Components/Auth/SignIn";
-import SignUp from "./Components/Auth/SignUp";
-import ForgotPassword from "./Components/Auth/ForgotPassword";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-// import SearchResults from "./Components/SearchResults";
+import Destinations from "./Components/Destinations/Destinations";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
+import ListAndMap from "./Components/ListAndMap/ListAndMap"; // Import the new component
+import Register from "./Components/Register/Register"; // Import Register component
+import SignIn from "./Components/Register/signin"; // Import SignIn component
+// import Flight from "./Components/Flight/Navbar"; // Import Flight component
 
 const App = () => {
   const [places, setPlaces] = useState([]);
@@ -27,7 +28,6 @@ const App = () => {
   const [bounds, setBounds] = useState(null);
   const [apiCallCount, setApiCallCount] = useState(0);
   const [showListAndMap, setShowListAndMap] = useState(false);
-  // const navigate = useNavigate();
 
   useEffect(() => {
     const getLocation = () => {
@@ -86,75 +86,90 @@ const App = () => {
   const handleSearch = () => {
     setShowListAndMap(true);
   };
-
   return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/destinations" element={<Destinations />} />
-        <Route
-          path="/" element={ <Home onPlaceChanged={onPlaceChanged}
-              onLoad={onLoad}
-              onSearch={handleSearch}
-            />
-          }
-        />
-      </Routes>
-      {/* <Home onPlaceChanged={onPlaceChanged} onLoad={onLoad} onSearch={handleSearch} /> */}
-      <Footer />
-      {/* <Main /> */}
-      {/* { <Footer/>} */}
-      <CssBaseline />
-      {/* <Header onPlaceChanged={onPlaceChanged} onLoad={onLoad} onSearch={handleSearch} /> */}
-      {showListAndMap && (
-        <>
-          {/* <Header /> */}
-
-          <Grid container spacing={3} style={{ width: "100%" }}>
-            <Grid item xs={12} md={4}>
-              <List
-                isLoading={isLoading}
-                childClicked={childClicked}
-                places={filteredPlaces.length ? filteredPlaces : places}
-                type={type}
-                setType={setType}
-                rating={rating}
-                setRating={setRating}
-              />
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              md={8}
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Map
-                setCoordinates={setCoordinates}
-                setBounds={setBounds}
-                coordinates={coordinates}
-                places={filteredPlaces.length ? filteredPlaces : places}
-                setChildClicked={setChildClicked}
-              />
-            </Grid>
-          </Grid>
-        </>
-      )}
+      <div>
+        <Navbar />
+        <Routes>
+          <Route path="/destinations" element={<Destinations />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/signin" element={<SignIn />} /> Route for SignIn
+          component
+          {/* <Route path="/flight" element={<Flight />} /> Route for Flight component */}
+          <Route
+            path="/"
+            element={
+              <>
+                <Home
+                  onPlaceChanged={onPlaceChanged}
+                  onLoad={onLoad}
+                  onSearch={handleSearch}
+                />
+                {/* <AppContainer> */}
+                <MapWrapper
+                  isLoading={isLoading}
+                  childClicked={childClicked}
+                  places={places}
+                  filteredPlaces={filteredPlaces}
+                  type={type}
+                  setType={setType}
+                  rating={rating}
+                  setRating={setRating}
+                  setCoordinates={setCoordinates}
+                  setBounds={setBounds}
+                  coordinates={coordinates}
+                  setChildClicked={setChildClicked}
+                  showListAndMap={showListAndMap}
+                />
+                {/* </AppContainer> */}
+              </>
+            }
+          />
+        </Routes>
+        <Footer />
+        <CssBaseline />
+      </div>
     </Router>
   );
 };
 
+const MapWrapper = ({
+  isLoading,
+  childClicked,
+  places,
+  filteredPlaces,
+  type,
+  setType,
+  rating,
+  setRating,
+  setCoordinates,
+  setBounds,
+  coordinates,
+  setChildClicked,
+  showListAndMap,
+}) => {
+  const location = useLocation();
+
+  return (
+    <>
+      {location.pathname === "/" && showListAndMap && (
+        <ListAndMap
+          isLoading={isLoading}
+          childClicked={childClicked}
+          places={places}
+          filteredPlaces={filteredPlaces}
+          type={type}
+          setType={setType}
+          rating={rating}
+          setRating={setRating}
+          setCoordinates={setCoordinates}
+          setBounds={setBounds}
+          coordinates={coordinates}
+          setChildClicked={setChildClicked}
+        />
+      )}
+    </>
+  );
+};
+
 export default App;
-
-
-
-
-
-
-
-
-
-

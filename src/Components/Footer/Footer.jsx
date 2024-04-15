@@ -1,32 +1,50 @@
 import React from "react";
 import "./Footer.css";
-import video2 from '../../Assets/waterfalls.mp4';
-import { FiSend, FiInstagram, FiMail } from "react-icons/fi";
-import { MdTravelExplore } from "react-icons/md";
+import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
-    return (
-        <section className='footer'>
-            <div className='secContent container'>
-                <div className="quote-container">
-                    <p className="quote">
-                        <span>"Once a year go somewhere you have never been before." — Dalai Lama</span></p>
-                        <p1><span>Travel Planner, Happy planner !</span></p1>
-                </div>
-                <div className="contact-info">
-                    <p className="email">
-                        <FiMail className="icon" style={{ color: '#2D9596' }} /><b>Email us at:</b> <a href="mailto:travel@example.com" style={{ color: '#2D9596' }}>travel@example.com</a>
-                    </p>
-                    <p className="phone">
-                        <FiSend className="icon" style={{ color: '#2D9596' }} /><b>Call us:</b> <span style={{ color: '#2D9596' }}>+123 456 7890</span>
-                    </p>
-                    <p className="instagram">
-                        <FiInstagram className="icon" style={{ color: '#2D9596' }} /> <b>Follow us on Instagram:</b> <a href="https://instagram.com/travel" style={{ color: '#2D9596' }}>Travel Planner</a>
-                    </p>
-                </div>
-            </div>
-        </section>
-    );
+  return (
+    <footer className="footer">
+      <div className="footer-container">
+        <div className="footer-section about">
+          <h3>About Us</h3>
+          <p>
+            We are a travel company dedicated to helping you plan your dream vacations and create unforgettable memories.
+          </p>
+        </div>
+        <div className="footer-section links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/destinations">Destinations</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+        <div className="footer-section contact">
+          <h3>Contact Info</h3>
+          <p>
+            123 Travel Lane<br />
+            City, Country<br />
+            <a href="mailto:info@travelplanner.com">info@travelplanner.com</a><br />
+            <a href="tel:+1234567890">+1 (234) 567-890</a>
+          </p>
+        </div>
+        <div className="footer-section social">
+          <h3>Follow Us</h3>
+          <div className="social-icons">
+            <a href="https://facebook.com/travelplanner"><FaFacebook /></a>
+            <a href="https://twitter.com/travelplanner"><FaTwitter /></a>
+            <a href="https://instagram.com/travel"><FaInstagram /></a>
+            <a href="https://youtube.com/travelplanner"><FaYoutube /></a>
+          </div>
+        </div>
+      </div>
+      <div className="footer-bottom">
+        <p>&copy; {new Date().getFullYear()} Travel Planner. All rights reserved.</p>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

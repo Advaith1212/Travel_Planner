@@ -1,51 +1,75 @@
 .footer {
-  width: 100%;
-  position: relative;
-  padding: 2rem 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-  background-color: #FFFFFF; /* White background */
+  background-color: #222;
+  color: #fff;
+  padding: 4rem 0;
 }
 
-.footer .secContent {
-  width: 80%;
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: flex-start;
 }
 
-.footer .quote-container {
-  width: 45%; /* Adjust the width as needed */
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+  padding: 0 1.5rem;
+  margin-bottom: 2rem;
 }
 
-.footer .quote {
-  color: #59D5E0; /* Sea-blue color for the quote */
-  font-family: 'Your Desired Font', cursive; /* Change 'Your Desired Font' to the font you want to use */
+.footer-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #ff6b6b;
 }
 
-.footer .quote span {
-  white-space: nowrap; /* Ensures the quote stays in one line */
+.footer-section p {
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
-.footer.p1
-{
-  color: #12372A;
+.footer-section ul {
+  list-style: none;
+  padding: 0;
 }
 
-.footer .contact-info {
-  width: 45%; /* Adjust the width as needed */
+.footer-section ul li {
+  margin-bottom: 0.5rem;
 }
 
-.footer .contact-info p {
-  margin-bottom: 1rem; /* Adjust spacing between contact info */
+.footer-section ul li a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
-.footer .contact-info a {
-  color: #1E90FF; /* Sea-blue color for links */
+.footer-section ul li a:hover {
+  color: #ff6b6b;
 }
 
-.footer .icon {
-  margin-right: 0.5rem;
+.social-icons {
+  display: flex;
+}
+
+.social-icons a {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #ff6b6b;
+}
+
+.footer-bottom {
+  background-color: #111;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: 0.9rem;
 }

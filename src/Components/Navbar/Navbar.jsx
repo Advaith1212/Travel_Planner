@@ -4,6 +4,7 @@ import "./Navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouseUser } from "@fortawesome/free-solid-svg-icons";
 import { faRoute } from "@fortawesome/free-solid-svg-icons";
+import SignInModal from '../SignInModal';
 
 const Navbar = () => {
   const [activeItem, setActiveItem] = useState(null);
@@ -27,9 +28,8 @@ const Navbar = () => {
             <li className="navItem">
               <Link
                 to="/"
-                className={`navLink ${
-                  activeItem === "Home" ? "activeNavItem" : ""
-                }`}
+                className={`navLink ${activeItem === "Home" ? "activeNavItem" : ""
+                  }`}
                 onClick={() => handleItemClick("Home")}
               >
                 <FontAwesomeIcon icon={faHouseUser} />
@@ -40,15 +40,14 @@ const Navbar = () => {
             <li className="navItem">
               <Link
                 to="/about"
-                className={`navLink ${
-                  activeItem === "About" ? "activeNavItem" : ""
-                }`}
+                className={`navLink ${activeItem === "About" ? "activeNavItem" : ""
+                  }`}
                 onClick={() => handleItemClick("About")}
               >
                 About
               </Link>
             </li>
-            <li className="navItem">
+            {/* <li className="navItem">
               <Link
                 to="/signin"
                 className={`navLink ${
@@ -58,18 +57,38 @@ const Navbar = () => {
               >
                 Sign In
               </Link>
-            </li>
+            </li> */}
             <li className="navItem">
               <Link
                 to="/destinations"
-                className={`navLink ${
-                  activeItem === "Destinations" ? "activeNavItem" : ""
-                }`}
+                className={`navLink ${activeItem === "Destinations" ? "activeNavItem" : ""
+                  }`}
                 onClick={() => handleItemClick("Destinations")}
               >
                 Destinations
               </Link>
             </li>
+
+            {/* <li className="navItem">
+              <Link
+                to="/signin"
+                className={`navLink ${
+                  activeItem === "Register" ? "activeNavItem" : ""
+                }`}
+                onClick={() => handleItemClick("Register")}
+              >
+                Register
+              </Link>
+              </li> */}
+
+            {/* <ul> */}
+              <li className="navItem">
+                <SignInModal />
+              </li>
+              {/* Other navbar items */}
+            {/* </ul> */}
+
+
           </ul>
         </div>
       </header>

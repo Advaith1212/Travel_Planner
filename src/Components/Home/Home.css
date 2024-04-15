@@ -1,159 +1,90 @@
-
-
-/* Colors and styling */
-:root {
-  --PrimaryColor: .hsl(199, 100%, 33%);
-  --SecondaryColor: hsl(187, 85%, 43%);
-  --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
-  --whiteColor: hsl(0, 0%, 100%);
-  --blackColor: hsl(201, 33%, 16%);
-  --textColor: hsl(240, 4%, 36%);
-  --whiteColorDeam: hsl(0, 0%, 93%);
-  --greyText: rgb(190, 190, 190);
-  --inputColor: rgb(239, 239, 239);
-  --bodyColor: rgb(240, 240, 246);
-  --cardBG: rgb(225, 225, 235);
-}
-
 .home {
   width: 100%;
+  height: 100vh;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: auto;
 }
-.home .overLay {
+
+.overlay {
   position: absolute;
-  height: 100%;
-  width: 100%;
-  background: rgb(46, 106, 127);
   top: 0;
-  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
-  mix-blend-mode: hard-light;
 }
+
 .home video {
   position: absolute;
-  height: 100%;
-  width: 100%;
   top: 0;
-  bottom: 0;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-.home .homeContent {
-  height: -moz-max-content;
-  height: max-content;
+  left: 0;
   width: 100%;
-  padding: 8rem 1.5rem 3rem;
-  display: flex;
-  row-gap: 3rem;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: center;
-  margin: auto;
-  color: var(--whiteColor);
-  z-index: 100;
+  height: 100%;
+  object-fit: cover;
 }
-.home .homeContent .textDiv {
-  padding: 2rem 0;
-}
-.home .homeContent .textDiv .smallText {
-  font-size: 13px;
-  text-transform: uppercase;
-}
-.home .homeContent .textDiv .homeTitle {
+
+.homeContent {
   position: relative;
-  font-size: 1.8rem;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
-.home .homeContent .cardDiv {
-  position: relative;
-  padding: 2rem 1rem;
-  background: var(--whiteColor);
-  border-radius: 10px;
-  padding-bottom: 50px;
-  gap: 1rem;
+
+.textDiv {
+  margin-bottom: 2rem;
 }
-.home .homeContent .cardDiv .label1 {
-  display: block;
-  color: var(--textColor);
-  padding-top: 7px;
-  padding-bottom: 2px;
-  font-size: 13px;
-  font-weight: 500;
+
+.homeTitle {
+  font-size: 3rem;
+  margin-bottom: 1rem;
 }
-.home .homeContent .cardDiv .label_total {
-  justify-content: space-between;
+
+.quote {
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+.search-bar {
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 50px;
+  padding: 5px;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-.home .homeContent .cardDiv .label_total .total {
-  color: var(--textColor);
-  font-size: 18px;
-  padding-bottom: 10px;
-}
-.home .homeContent .cardDiv .input {
-  height: 40px;
-  padding: 0 1 rem;
-  background: var(--inputColor);
-  border-radius: 3rem;
-}
-.home .homeContent .cardDiv .input input {
-  background: none;
+
+.search-bar input {
+  flex: 1;
   border: none;
   outline: none;
-  width: 100%;
-  font-size: 13px;
-  font-weight: 500;
-}
-.home .homeContent .cardDiv .input input::-moz-placeholder {
   font-size: 16px;
+  padding: 0 10px;
 }
-.home .homeContent .cardDiv .input input::placeholder {
-  font-size: 16px;
-}
-.home .homeContent .cardDiv .input .icon {
-  font-size: 18px;
-  color: var(--blackColor);
-  margin-left: 10px;
-}
-.home .homeContent .cardDiv .input .input[type=range] {
-  background: blue;
-}
-.home .homeContent .cardDiv .searchOptions {
-  position: absolute;
-  background: var(--gradientColor);
-  width: -moz-max-content;
-  width: max-content;
-  bottom: 0.7rem;
-  -moz-column-gap: 0.8rem;
-       column-gap: 0.8rem;
-  padding: 5px, 2rem;
-  border-radius: 3rem;
-  left: 50%;
-  transform: translateX(-50%);
+
+.search-bar .search-button {
+  background-color: #ff5a5f;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 10px;
 }
-.home .homeContent .cardDiv .searchOptions:hover {
-  background: var(--SecondaryColor);
+
+.search-bar .search-button:hover {
+  background-color: #ff3d4a;
 }
-.home .homeContent .cardDiv .searchOptions .icon {
-  font-size: 18px;
-}
-.home .homeContent .cardDiv .searchOptions span {
-  font-size: 15px;
-}
-.home .homeContent .homeFooterIcons {
-  width: 100%;
-  justify-content: space-between;
-}
-.home .homeContent .homeFooterIcons .icon {
-  font-size: 20px;
-  margin: 0 5px;
-  color: var(--whiteColor);
-  font-weight: 600;
-}
-.home .homeContent .homeFooterIcons .icon:hover {
-  color: black;
-}/*# sourceMappingURL=Home.css.map */
