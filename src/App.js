@@ -27,7 +27,7 @@ const App = () => {
   const [coordinates, setCoordinates] = useState({});
   const [bounds, setBounds] = useState(null);
   const [apiCallCount, setApiCallCount] = useState(0);
-  const [showListAndMap, setShowListAndMap] = useState(false);
+  const [showListAndMap, setShowListAndMap] = useState(true);
 
   useEffect(() => {
     const getLocation = () => {
