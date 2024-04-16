@@ -22,40 +22,56 @@ const Navbar = ({ cartItems }) => {
     <Document>
       <Page size="A4" style={pdfStyles.page}>
         <View style={pdfStyles.section}>
-          <Text>My wishlist</Text>
+        <Text style={pdfStyles.heading}>My Wishlist</Text>
           {cartItems.map((item, index) => (
             <View key={index} style={pdfStyles.item}>
-              <Text style={pdfStyles.itemName}>{index + 1}. {item.name}</Text>
+            <Text style={pdfStyles.itemName}>
+              {index + 1}. {item.name}
+            </Text>
+            {item.address && (
               <Text style={pdfStyles.itemAddress}>Address: {item.address}</Text>
-            </View>
+            )}
+          </View>
           ))}
         </View>
       </Page>
     </Document>
   );
-  
+
   const pdfStyles = StyleSheet.create({
     page: {
-      flexDirection: 'column',
-      backgroundColor: '#E4E4E4',
-      padding: 20,
+      fontFamily: 'Helvetica',
+      fontSize: 12,
+      paddingTop: 35,
+      paddingBottom: 65,
+      paddingHorizontal: 35,
     },
     section: {
-      margin: 10,
-      padding: 10,
-      flexGrow: 1,
+      marginBottom: 20,
+    },
+    heading: {
+      fontSize: 24,
+      fontWeight: 'bold',
+      marginBottom: 10,
+      textAlign: 'center',
+      textDecoration: 'underline',
+      color: '#007bff',
     },
     item: {
-      flexDirection: 'row',
-      marginBottom: 5,
+      marginBottom: 15,
+      padding: 10,
+      backgroundColor: '#f5f5f5',
+      borderRadius: 5,
     },
     itemName: {
-      flex: 1,
+      fontSize: 16,
       fontWeight: 'bold',
+      marginBottom: 5,
     },
     itemAddress: {
-      flex: 1,
-      textAlign: 'right',
+      fontSize: 12,
+      color: '#555',
+      marginLeft: 20,
     },
   });
 
@@ -83,15 +99,15 @@ const Navbar = ({ cartItems }) => {
                 Home
               </Link>
             </li>
-            <li className="navItem">
+            {/* <li className="navItem">
               <Link
-                to="/about"
-                className={`navLink ${activeItem === "About" ? "activeNavItem" : ""}`}
-                onClick={() => handleItemClick("About")}
+                to="/Who We Are"
+                className={`navLink ${activeItem === "Who We Are" ? "activeNavItem" : ""}`}
+                onClick={() => handleItemClick("Who we Are")}
               >
-                About
+                Who We Are
               </Link>
-            </li>
+            </li> */}
             <li className="navItem">
               <Link
                 to="/destinations"
@@ -113,35 +129,58 @@ const Navbar = ({ cartItems }) => {
           </ul>
         </div>
       </header>
-      {isCartOpen && (
-        <div className="cartDropdown">
-          <h3>My wishlist</h3>
-          {cartItems.length === 0 ? (
-            <p>No items in the cart</p>
-          ) : (
-            <>
-            <ul>
-              {cartItems.map((item, index) => (
-                <li key={index}>
-                  <p>{index +1} Name: {item.name}</p>
-                  <p>Address: {item.address}</p>
-                </li>
-              ))}
-            </ul>
-            <PDFDownloadLink
+{isCartOpen && (
+  <div className="cartDropdown">
+    <h3 style={{ fontSize: '24px', fontWeight: 'bold' }}>My Wishlist</h3>
+    {cartItems.length === 0 ? (
+      <p>No items in the wishlist</p>
+    ) : (
+      <>
+        <ul>
+          {cartItems.map((item, index) => (
+            <li key={index}>
+              <p style={{ fontSize: '18px', fontWeight: 'bold' }}>
+                {index + 1} {item.name}
+              </p>
+              {item.address && (
+                <p style={{ fontSize: '14px', marginLeft: '20px' }}>
+                  Address: {item.address}
+                </p>
+              )}
+            </li>
+          ))}
+        </ul>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <PDFDownloadLink
             document={<CartItemsPDF cartItems={cartItems} />}
             fileName="cart-items.pdf"
           >
-            {({ blob, url, loading, error }) =>
-              loading ? 'Generating PDF...' : 'Download PDF'
-            }
+            {({ blob, url, loading, error }) => (
+              <>
+                <span style={{ marginRight: '10px' }}>
+                  {loading ? 'Generating PDF...' : (
+                    <i className="fas fa-file-pdf" style={{ fontSize: '24px' }}></i>
+                  )}
+                </span>
+                <span>Generate Itinerary</span>
+              </>
+            )}
           </PDFDownloadLink>
-          </>
-          )}
         </div>
-      )}
+      </>
+    )}
+  </div>
+)}
     </section>
   );
 };
 
 export default Navbar;
+
+
+
+
+
+
+
+
