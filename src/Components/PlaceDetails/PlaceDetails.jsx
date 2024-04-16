@@ -8,9 +8,21 @@ import useStyles from './styles.js';
 import PhoneIcon from '@material-ui/icons/Phone';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
-const PlaceDetails = ({ place, selected, refProp }) => {
+const PlaceDetails = ({ place, selected, refProp, onAddToCart }) => {
   if (selected) refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   const classes = useStyles();
+
+  const handleAddToCart = () => {
+    const cartItem = {
+      name: place.name,
+      rating: place.rating,
+      price: place.price_level,
+      address: place.address,
+    };
+    onAddToCart(cartItem);
+  };
+
+  
 
   return (
     <Card elevation={6}>
@@ -60,11 +72,11 @@ const PlaceDetails = ({ place, selected, refProp }) => {
         )}
       </CardContent>
       <CardActions>
-        {/* <Button size="small" color="primary" onClick={() => window.open(place.web_url, '_blank')}>
-          Trip Advisor
-        </Button> */}
         <Button size="small" color="primary" onClick={() => window.open(place.website, '_blank')}>
           Website
+        </Button>
+        <Button size="small" color="primary" onClick={handleAddToCart}>
+          Add to wishlist
         </Button>
       </CardActions>
     </Card>

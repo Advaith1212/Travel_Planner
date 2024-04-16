@@ -45,6 +45,7 @@ const ListAndMap = ({
   setBounds,
   coordinates,
   setChildClicked,
+   handleAddToCart,
 }) => {
   return (
     <>
@@ -59,6 +60,7 @@ const ListAndMap = ({
               setType={setType}
               rating={rating}
               setRating={setRating}
+              onAddToCart={handleAddToCart}
             />
           </Grid>
           <Grid

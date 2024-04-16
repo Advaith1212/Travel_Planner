@@ -11,10 +11,9 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
-import ListAndMap from "./Components/ListAndMap/ListAndMap"; // Import the new component
-import Register from "./Components/Register/Register"; // Import Register component
-import SignIn from "./Components/Register/signin"; // Import SignIn component
-// import Flight from "./Components/Flight/Navbar"; // Import Flight component
+import ListAndMap from "./Components/ListAndMap/ListAndMap";
+import Register from "./Components/Register/Register";
+import SignIn from "./Components/Register/signin";
 
 const App = () => {
   const [places, setPlaces] = useState([]);
@@ -28,6 +27,7 @@ const App = () => {
   const [bounds, setBounds] = useState(null);
   const [apiCallCount, setApiCallCount] = useState(0);
   const [showListAndMap, setShowListAndMap] = useState(true);
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     const getLocation = () => {
@@ -69,6 +69,7 @@ const App = () => {
       setApiCallCount((prevCount) => prevCount + 1);
     }
   }, [bounds, type]);
+
   const onLoad = (autoC) => setAutocomplete(autoC);
 
   const onPlaceChanged = () => {
@@ -78,7 +79,6 @@ const App = () => {
       const lng = place.geometry.location.lng();
       setCoordinates({ lat, lng });
     } else {
-      // Handle the case where no place is selected or the place object is invalid
       console.log("No place selected or place object is invalid");
     }
   };
@@ -86,16 +86,19 @@ const App = () => {
   const handleSearch = () => {
     setShowListAndMap(true);
   };
+
+  const handleAddToCart = (cartItem) => {
+    setCartItems((prevItems) => [...prevItems, cartItem]);
+  };
+
   return (
     <Router>
       <div>
-        <Navbar />
+        <Navbar cartItems={cartItems} />
         <Routes>
           <Route path="/destinations" element={<Destinations />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/signin" element={<SignIn />} /> Route for SignIn
-          component
-          {/* <Route path="/flight" element={<Flight />} /> Route for Flight component */}
+          <Route path="/signin" element={<SignIn />} />
           <Route
             path="/"
             element={
@@ -105,7 +108,6 @@ const App = () => {
                   onLoad={onLoad}
                   onSearch={handleSearch}
                 />
-                {/* <AppContainer> */}
                 <MapWrapper
                   isLoading={isLoading}
                   childClicked={childClicked}
@@ -120,8 +122,8 @@ const App = () => {
                   coordinates={coordinates}
                   setChildClicked={setChildClicked}
                   showListAndMap={showListAndMap}
+                  handleAddToCart={handleAddToCart}
                 />
-                {/* </AppContainer> */}
               </>
             }
           />
@@ -147,6 +149,7 @@ const MapWrapper = ({
   coordinates,
   setChildClicked,
   showListAndMap,
+  handleAddToCart,
 }) => {
   const location = useLocation();
 
@@ -166,6 +169,7 @@ const MapWrapper = ({
           setBounds={setBounds}
           coordinates={coordinates}
           setChildClicked={setChildClicked}
+          handleAddToCart={handleAddToCart}
         />
       )}
     </>

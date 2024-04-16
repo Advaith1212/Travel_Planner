@@ -4,9 +4,15 @@ import { CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, 
 import PlaceDetails from '../PlaceDetails/PlaceDetails';
 import useStyles from './styles.js';
 
-const List = ({ places, type, setType, rating, setRating, childClicked, isLoading }) => {
+const List = ({ places, type, setType, rating, setRating, childClicked, isLoading, onAddToCart }) => {
   const [elRefs, setElRefs] = useState([]);
   const classes = useStyles();
+
+  const [cartItems, setCartItems] = useState([]);
+
+  const handleAddToCart = (cartItem) => {
+    setCartItems((prevItems) => [...prevItems, cartItem]);
+  };
 
   useEffect(() => {
     setElRefs((refs) => Array(places.length).fill().map((_, i) => refs[i] || createRef()));
@@ -38,13 +44,26 @@ const List = ({ places, type, setType, rating, setRating, childClicked, isLoadin
               <MenuItem value="4.5">Above 4.5</MenuItem>
             </Select>
           </FormControl>
-          <Grid container spacing={3} className={classes.list}>
+          {/* <Grid container spacing={3} className={classes.list}>
             {places?.map((place, i) => (
               <Grid ref={elRefs[i]} key={i} item xs={12}>
-                <PlaceDetails selected={Number(childClicked) === i} refProp={elRefs[i]} place={place} />
+                <PlaceDetails selected={Number(childClicked) === i} refProp={elRefs[i]} place={place} onAddToCart={handleAddToCart} />
               </Grid>
             ))}
+          </Grid> */}
+          <Grid container spacing={3} className={classes.list}>
+        {places?.map((place, i) => (
+          <Grid ref={elRefs[i]} key={i} item xs={12}>
+            <PlaceDetails
+              selected={Number(childClicked) === i}
+              refProp={elRefs[i]}
+              place={place}
+              onAddToCart={onAddToCart}
+            />
           </Grid>
+        ))}
+      </Grid>
+          
         </>
       )}
     </div>
