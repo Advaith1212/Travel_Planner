@@ -4,6 +4,7 @@ import "./Navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouseUser, faRoute, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import SignInModal from '../SignInModal';
+import { PDFDownloadLink, Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 
 const Navbar = ({ cartItems }) => {
   const [activeItem, setActiveItem] = useState(null);
@@ -16,6 +17,48 @@ const Navbar = ({ cartItems }) => {
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
   };
+
+  const CartItemsPDF = ({ cartItems }) => (
+    <Document>
+      <Page size="A4" style={pdfStyles.page}>
+        <View style={pdfStyles.section}>
+          <Text>My wishlist</Text>
+          {cartItems.map((item, index) => (
+            <View key={index} style={pdfStyles.item}>
+              <Text style={pdfStyles.itemName}>{index + 1}. {item.name}</Text>
+              <Text style={pdfStyles.itemAddress}>Address: {item.address}</Text>
+            </View>
+          ))}
+        </View>
+      </Page>
+    </Document>
+  );
+  
+  const pdfStyles = StyleSheet.create({
+    page: {
+      flexDirection: 'column',
+      backgroundColor: '#E4E4E4',
+      padding: 20,
+    },
+    section: {
+      margin: 10,
+      padding: 10,
+      flexGrow: 1,
+    },
+    item: {
+      flexDirection: 'row',
+      marginBottom: 5,
+    },
+    itemName: {
+      flex: 1,
+      fontWeight: 'bold',
+    },
+    itemAddress: {
+      flex: 1,
+      textAlign: 'right',
+    },
+  });
+
 
   return (
     <section className="navBarSection">
@@ -76,6 +119,7 @@ const Navbar = ({ cartItems }) => {
           {cartItems.length === 0 ? (
             <p>No items in the cart</p>
           ) : (
+            <>
             <ul>
               {cartItems.map((item, index) => (
                 <li key={index}>
@@ -84,6 +128,15 @@ const Navbar = ({ cartItems }) => {
                 </li>
               ))}
             </ul>
+            <PDFDownloadLink
+            document={<CartItemsPDF cartItems={cartItems} />}
+            fileName="cart-items.pdf"
+          >
+            {({ blob, url, loading, error }) =>
+              loading ? 'Generating PDF...' : 'Download PDF'
+            }
+          </PDFDownloadLink>
+          </>
           )}
         </div>
       )}
