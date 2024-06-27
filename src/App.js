@@ -5,7 +5,8 @@ import { CssBaseline } from "@material-ui/core";
 import { getPlacesData } from "./api";
 import Footer from "./Components/Footer/Footer";
 import Destinations from "./Components/Destinations/Destinations";
-import WhoWeAre from "./Components/WhoWeAre/WhoWeAre";
+//import About from "./Components/";
+import Flight from "./Components/Flights/Flights";
 
 import {
   BrowserRouter as Router,
@@ -99,9 +100,10 @@ const App = () => {
         <Navbar cartItems={cartItems} />
         <Routes>
           <Route path="/destinations" element={<Destinations />} />
-          <Route path="/Who we Are" element={<WhoWeAre />} />
+          {/* <Route path="/Who we Are" element={<WhoWeAre />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signin" element={<SignIn />} /> */}
+          <Route path="/Flight" element={<Flight />} />
           <Route
             path="/"
             element={

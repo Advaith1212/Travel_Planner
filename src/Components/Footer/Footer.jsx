@@ -18,7 +18,7 @@ const Footer = () => {
             <li><a href="/">Home</a></li>
             <li><a href="/destinations">Destinations</a></li>
             <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><a href="https://mediafiles.botpress.cloud/5ad05f3d-be43-4517-b03c-5dff6a5de464/webchat/bot.html">Contact Support</a></li>
           </ul>
         </div>
         <div className="footer-section contact">
